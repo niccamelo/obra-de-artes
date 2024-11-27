@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leilão</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/leilao.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <div class="list-nav">
+
+                <div class="logo">
+                    <p>Obras de Artes</p>
+                </div>
+                <div class="lista">
+                    <ul>
+                        <li><a href="{{ url_for('home')}}">Home</a></li>
+                        <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                        <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main">
+        <h1>Leilões de Obras de Arte</h1>
+        <div class="card-leilao">
+            {% if leiloes %}
+            <div class="leiloes">
+                {% for leilao in leiloes %}
+                
+                
+                <div class="leilao">
+                    <img id="img-obra" src="{{ url_for('static', filename=leilao.obra.get_imagem()) }}" />
+
+                    <div class="text-obra">
+                        <h2>{{ leilao.obra.titulo }}</h2>
+                        <div class="text-obra2">
+                        
+                        <p><b> Artista: <br></b>
+                         {{ leilao.obra.artista.nome }}</p>
+                        <p><b>Lance inicial: <br></b>
+                        R$ {{ leilao.lance_inicial | round(2) }}</p>
+                        <p class="data"><b>Período do Leilão:<br></b>
+                         {{ leilao.data_inicio.strftime('%d/%m/%Y
+                            %H:%M') }} até {{ leilao.data_fim.strftime('%d/%m/%Y %H:%M') }}</p>
+                        </div>
+                        <a href="/leilao/{{ leilao.id }}" class="botao"><div class="button-detalhes">
+                            Detalhes
+                        </div></a>
+                    </div>
+                   
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>Nenhum leilão disponível no momento.</p>
+            {% endif %}
+        </div>
+        <div>
+
+        </div>
+    </div>
+    </div>
+    </div>
+    <footer>
+        <div class="ft">
+            <ul>
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>

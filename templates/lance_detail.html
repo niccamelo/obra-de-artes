@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lances</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/comentario.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <div class="list-nav">
+
+                <div class="logo">
+                    <p>Obras de Artes</p>
+                </div>
+                <div class="lista">
+                    <ul>
+                        <li><a href="{{ url_for('home')}}">Home</a></li>
+                        <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                        <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <h1 class="text" style="color:#a04e07">Lances</h1>
+        
+        <div class="lances">
+            <div class="lances-img">
+                <img id="img-obra" src="{{ url_for('static', filename=leilao.obra.get_imagem()) }}" />
+            </div>
+            <div class="lances-text">
+
+                <div class="lances-text-1">
+                    <h3> {{ leilao['usuario'] }}  | Obra de arte: {{ leilao['obra']['titulo'] }} </h3>
+                    <p class="sub-titulo" style="font-size: 24px; color: #a04e07;"><b>Lance Inicial:</b> R$ {{
+                        leilao['lance_inicial'] | round(2) }}</p>
+                    <p class="sub-titulo" style="font-size: 12px;"><b>Data de Início:</b> {{
+                        leilao['data_inicio'].strftime('%d/%m/%Y %H:%M') }} | <b>Data de Término:</b> {{
+                        leilao['data_fim'].strftime('%d/%m/%Y %H:%M') }}</p>
+                    <p>{{ leilao['comentario'] }} </p>
+                </div>
+
+                <div class="lances-comentario">
+                    <h2>Dê outro lance</h2>
+                    <form method="POST">
+                        <div class="post">
+                            <div class="form-group">
+                                <label for="usuario">Nome do Usuário:</label>
+                                <input type="text" class="form-control" id="usuario" name="usuario" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="valor">Valor do Lance:</label>
+                                <input type="number" class="form-control" id="valor" name="valor" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="comentario">Comentário:</label>
+                                <textarea class="form-control" id="comentario" name="comentario" rows="3"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="button-lances">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="comentarios">
+            <h3>Lances</h3>
+            <div class="comentarios-text">
+                <div class="text">
+                    {% if comentarios_lances %}
+                    {% for lance in comentarios_lances %}
+                    <div class="comentario-item">
+                        <div class="a1">
+                            <h2>{{ lance['usuario'] }} </h2>
+                            <p class="balao"> {{ lance['comentario'] }}</p>
+                        </div>
+                        <div class="a2">
+                            <h2>R$ {{ lance['valor'] | round(2) }}</h2>
+                            <p><small>Data: {{ lance['data'].strftime('%d/%m/%Y %H:%M') }}</small></p>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    {% endfor %}
+                    {% else %}
+                    <p>Não há lances ou comentários para este leilão ainda.</p>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+
+        
+    
+
+    </div>
+    <footer>
+        <div class="ft">
+            <ul>
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+
+</body>
+
+</html>

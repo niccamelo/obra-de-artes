@@ -1,0 +1,225 @@
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    width: 100%;
+    margin: 0;
+    justify-items: center;
+
+}
+
+.card {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+
+    
+}
+
+.cardb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.quadro {
+    display: flex;
+}
+
+.quadro{
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.quadro:hover{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+
+.text p {
+    font-size: 30px;
+    color: #0F6466;
+    position: relative;
+    right: 5px;
+}
+
+.title {
+    display: flex;
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 10px;
+
+}
+
+.img-obra {
+    display: flex;
+    justify-content: center;
+    position:relative;
+    overflow:hidden;
+    clear:both;
+    justify-content: center;
+    height: 600px;
+    max-width: 200px;
+}
+.img-obra img{
+    width: 450px;
+}
+
+.img-obra a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: rgb(109, 21, 21);
+    z-index:1;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+.obras-de-artes {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+.info-cards {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-around;
+}
+
+.card2 {
+    display: flex;
+    width: 70%;
+    height: 300px;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card2-img {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 300px;
+    justify-content: flex-start;
+    
+}
+.card2 p {   
+    margin: 0;
+    font-size: 30px;
+}
+
+.img2 {
+    display: flex;
+    justify-content: center;
+    position:relative;
+    overflow:hidden;
+    clear:both;
+    justify-content: center;
+    height: 200px;
+    max-width: 200px;
+    border: solid 1px #D8B08C;
+    border-radius: 2rem;
+    margin: .5rem;
+}
+
+.img2 img{
+    width: 200px;
+    height: 300px;
+}
+
+.card3 {
+    margin: 1rem;
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    border-radius: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin: .5rem;
+}
+
+.card3-img {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    
+}
+.card3 p {   
+    margin: 0;
+}
+
+.card3b {
+    display: flex;
+    width: 400px;
+    margin: .5rem;
+    background: #FFCB9A;
+    border-radius: 2rem;
+    align-items: center;
+}
+
+.text-3 a {
+    font-size: 18px;
+    color: #0F6466;
+    display: flex;
+}
+.sub-title3 {
+    
+    width: 60%;
+}
+.sub-title3 p {
+    font-size: 10px;
+}
+.img3 {
+    display: flex;
+    justify-content: center;
+    position:relative;
+    overflow:hidden;
+    clear:both;
+    justify-content: center;
+    height: 110px;
+    max-width: 110px;
+    border: solid 1px #0F6466;
+    border-radius: 2rem;
+    margin: .5rem;
+}
+.img3b {
+    width: 40%;
+}
+.img3 img{
+    width: 150px;
+    height: 250px;
+}
+.img2{
+    transition: all .5s;
+    border: 10px solid transparent;
+}
+
+.img2:hover{
+    border: 10px solid #0F6466;
+    border-radius: 50%;
+}
+
+.card3b{
+    transition: all .5s;
+    border: 10px solid transparent;
+}
+
+.card3b:hover{
+    border: 10px solid #D8B08C;
+    border-radius: 2rem;
+}
+

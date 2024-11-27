@@ -1,0 +1,140 @@
+.main {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+body {
+    
+    background: #FFCB9A;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+
+.info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    padding: 1rem;
+
+}
+.card img{
+    height: 400px;
+    border-radius: 2rem;
+    padding: 1rem;
+}
+
+.title {
+    display: flex;
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 40px;
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.title p {
+    display: flex;
+    color: #0F6466;
+    
+}
+.text {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+}
+
+.text a {
+    text-align: center;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+}
+.text1{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+.text p {
+    font-size: 18px;
+    color: #0F6466;
+}
+
+.obras {
+    display: flex;
+    width: 70% ;
+    height: 300px;
+    background: #D2E8E3;
+    border-radius: 2rem;
+    margin: 1rem;    
+    align-items: center;
+}
+
+.obras p {
+    font-size: 18px;
+    color: #0F6466;
+}
+
+.obra {
+    
+    display: flex;
+    text-decoration: none;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.text-obra {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 70%;
+    padding: 1rem;
+
+}
+
+.card-22 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+
+.text3 img {
+    height: 30px;
+    width: 30px;
+    border-radius: 10rem;
+    margin: 0;
+    padding: 0;
+}
+
+
+.text3 {
+    width: 300px;
+}
+
+.text3 p {
+    padding: .5rem;
+}
+.info-artista {
+    display: flex;
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
+}

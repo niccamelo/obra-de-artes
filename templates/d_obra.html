@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da obra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/obra_de_arte.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/comentario.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <div class="list-nav">
+
+                <div class="logo">
+                    <p>Obras de Artes</p>
+                </div>
+                <div class="lista">
+                    <ul>
+                        <li><a href="{{ url_for('home')}}">Home</a></li>
+                        <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                        <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="card">
+            <div class="info">
+                <img id="img-obra" src="{{ url_for('static', filename=obra_de_arte.get_imagem()) }}" />
+                <div class="text">
+                    <div class="title">
+                        <div class="title1">
+                            <p>{{obra_de_arte.get_titulo()}}</p>
+                        </div>
+                    </div>
+                    <div class="text2">
+                        <p>{{obra_de_arte.get_descricao()}}</p>
+                    </div>
+                    <div class="text3">
+                        <a class="info-artista" href=" /artista/{{ (obra_de_arte.artista.id)  }}">
+                            <img id="img-artista"
+                                src="{{ url_for('static', filename=obra_de_arte.artista.get_foto()) }}" />
+                            <p>{{obra_de_arte.artista.get_nome()}} | {{ categoria_obra.get_nome() }} | {{
+                                obra_de_arte.get_data() }}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-22">
+                <div class="lances-comentario">
+                    <h2>Dê seu lance</h2>
+                    <form method="POST">
+                        <div class="post">
+                            <div class="form-group">
+                                <label for="usuario">Nome do Usuário:</label>
+                                <input type="text" class="form-control" id="usuario" name="usuario" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="valor">Valor do Lance:</label>
+                                <input type="number" class="form-control" id="valor" name="valor" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="comentario">Comentário:</label>
+                                <textarea class="form-control" id="comentario" name="comentario" rows="3"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="button-lances">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="comentarios">
+                    <h3>Lances</h3>
+                    <div class="comentarios-text">
+                        <div class="text">
+                            {% if comentarios_lances %}
+                            {% for lance in comentarios_lances %}
+                            <div class="comentario-item">
+                                <div class="a1">
+                                    <h2>{{ lance['usuario'] }} </h2>
+                                    <p class="balao"> {{ lance['comentario'] }}</p>
+                                </div>
+                                <div class="a2">
+                                    <h2>R$ {{ lance['valor'] | round(2) }}</h2>
+                                    <p><small>Data: {{ lance['data'].strftime('%d/%m/%Y %H:%M') }}</small></p>
+                                    
+                                </div>
+                                <a href="/lance/{{ lance.id }}" class="botao"><div class="button-detalhes">
+                                    Detalhes
+                                </div></a>
+
+                            </div>
+
+                            <hr>
+                            {% endfor %}
+                            {% else %}
+                            <p>Não há lances ou comentários para este leilão ainda.</p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="ft">
+            <ul>
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>

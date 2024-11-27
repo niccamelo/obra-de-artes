@@ -1,0 +1,108 @@
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+body p {
+    color: #0F6466;
+}
+
+body h1 {
+    color: #0F6466;
+}
+
+.card-leilao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.leilao img {
+    width: 250px;
+}
+
+.leilao {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem;
+}
+
+.text-obra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    margin: 1rem;
+    background: #fff;
+    border-radius: 2rem;
+    justify-content: center;
+
+}
+
+.text-obra a {
+    display: grid;
+    text-align: end;
+}
+
+.text-obra2 {
+    width: 300px;
+}
+
+
+.lance {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    margin: 1rem;
+    background: #fff;
+    border-radius: 2rem;
+    justify-content: center;
+}
+.lance2 {
+    width: 300px;
+}
+
+.lances {
+    display: flex;
+    align-items: center;
+}
+
+.leilao-detail img {
+    width: 250px;
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.text-leilao {
+    
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 1rem;
+    background: #fff;
+    border-radius: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-leilao2 {
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+}
+h2 {
+    text-align: center;
+    color: #D8B08C; 
+}

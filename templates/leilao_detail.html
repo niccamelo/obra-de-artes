@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Leilão</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/leilao.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <div class="list-nav">
+
+                <div class="logo">
+                    <p>Obras de Artes</p>
+                </div>
+                <div class="lista">
+                    <ul>
+                        <li><a href="{{ url_for('home')}}">Home</a></li>
+                        <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                        <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <h1>Detalhes do Leilão</h1>
+
+    <div class="leilao-detail">
+        <div class="card">
+            <img id="img-obra" src="{{ url_for('static', filename=leilao.obra.get_imagem()) }}" />
+            <div class="text-leilao">
+                <div class="text-leilao2">
+                    <h2>{{ leilao.obra.titulo }}</h2>
+                    <p>Artista: {{ leilao.obra.artista.nome }}</p>
+                    <p>Lance Inicial: R$ {{ leilao.lance_inicial | round(2) }}</p>
+                    <p>Período do Leilão: {{ leilao.data_inicio.strftime('%d/%m/%Y %H:%M') }} até {{
+                        leilao.data_fim.strftime('%d/%m/%Y %H:%M') }}</p>
+                </div>
+            </div>
+        </div>
+        <h1>Lances Realizados</h1>
+        {% if comentarios_lances %}
+        <div class="lances">
+            {% for lance in comentarios_lances %}
+            <div class="lance">
+                <div class="lance2">
+                    
+                    <p><b>Nome: </b> {{ lance.usuario }}</p>
+                    <p><b>Valor: </b><br>R$ {{ lance.valor | round(2) }}</p>
+                    <p><b>Comentário: </b><br>{{ lance.comentario }}</p>
+                    <p><b>Data: </b><br>{{ lance.data.strftime('%d/%m/%Y %H:%M') }}</p>
+                </div>
+                <a href="/lance/{{ lance.id }}" class="botao"><div class="button-detalhes">
+                    Detalhes
+                </div>/a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>Nenhum lance realizado ainda.</p>
+        {% endif %}
+    </div>
+    <footer>
+        <div class="ft">
+            <ul>
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>

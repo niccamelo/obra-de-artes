@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artista</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/artista.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <div class="list-nav">
+                <div class="logo">
+                    <p>Obras de Artes</p>
+                </div>
+                <ul>
+                    <li><a href="{{ url_for('home')}}">Home</a></li>
+                    <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                    <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <div class="card">
+            <div class="info">
+                <img id="img-artista" src="{{ url_for('static', filename=artista.get_foto()) }}" />
+                <div class="text">
+                    <div class="title">
+                        <div class="title1">
+                            <p>{{artista.get_nome()}}</p>
+                        </div>
+                    </div>
+                    <div class="text2">
+                        <p>{{artista.get_biografia()}}</p>
+                    </div>
+                </div>
+            </div>
+            {% for obra in obras_do_artista %}
+            <div class="obras">
+                <a class="obra" href=" /obra_de_arte/{{ (obra.id)  }}"> <div class="card-obra">
+                    <img id="img-artista" src="{{ url_for('static', filename=obra.get_imagem()) }}" />
+                </div>
+                <div class="text-obra">
+                    <div class="text1">
+                       <b> <p>{{obra.get_titulo()}}</p></b>
+                    </div>
+                    <div class="text2">
+                        <p>{{obra.get_descricao()}}</p>
+                    </div></a>
+                </div>
+            
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <footer>
+        <div class="ft">
+            <ul>
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/index.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <div class="list-nav">
+
+                <div class="logo">
+                    <p>Obras de Artes</p>
+                </div>
+                <div class="lista">
+                    <ul>
+                        <li><a href="{{ url_for('home')}}">Home</a></li>
+                        <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                        <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+
+        <div class=card>=
+            {% for obra_de_arte in obra_de_arte_list %}
+            <div class=quadro>
+                <section id="classe-{{obra_de_arte.get_id()}}">
+
+                    <div class="img-obra">
+                        <a class="info-artista" href=" /obra_de_arte/{{ (obra_de_arte.id)  }}"> <img id="img-obra" src="{{ url_for('static', filename=obra_de_arte.get_imagem()) }}" /></a>
+                    </div>
+
+                </section>
+            </div>
+
+            {% endfor %}
+        </div>
+
+        <div class="info-cards">
+
+            <div class="obras-de-artes">
+                <div class="card2">
+                    <div class="text">
+                        <p>Quadros</p>
+                    </div>
+                    <div class="card2-img">
+                        {% for obra_de_arte in datas_obras %}
+                        <section id="classe-{{obra_de_arte.get_id()}}">
+                            <div class="img2">
+                                <a class="obra_de_arte" href=" /obra_de_arte/{{ (obra_de_arte.id)  }}"><img
+                                        id="img-obra"
+                                        src="{{ url_for('static', filename=obra_de_arte.get_imagem()) }}" />
+                            </div>
+                        </section>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="card2">
+                    <div class="text">
+                        <p>Esculturas</p>
+                    </div>
+                    <div class="card2-img">
+                        {% for obra_de_arte in datas_obras2 %}
+                        <section id="classe-{{obra_de_arte.get_id()}}">
+                            <div class="img2">
+                                <a class="obra_de_arte" href=" /obra_de_arte/{{ (obra_de_arte.id)  }}"><img
+                                        id="img-obra"
+                                        src="{{ url_for('static', filename=obra_de_arte.get_imagem()) }}" />
+                            </div>
+                        </section>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="card3">
+                <div class="text">
+                    <p>Artistas</p>
+                </div>
+                <div class="card3-img">
+                    {% for artista in artistas %}
+                    <section id="classe-{{artista.get_id()}}">
+                        <a class="artista" href=" /artista/{{ (artista.id)  }}">
+                            <div class="card3b">
+                                <div img3b>
+                                    <div class="img3">
+                                        <img id="img-obra" src="{{ url_for('static', filename=artista.get_foto()) }}" />
+                                    </div>
+                                </div>
+                                <div class="text-3">
+                                    <a class="artista" href=" /artista/{{ (artista.id)  }}">
+                                        <p>{{artista.get_nome()}}</p>
+                                    </a>
+                                    <div class="sub-title3">
+                                        <p>{{artista.get_biografia()}}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </a>
+                    </section>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="ft">
+            <ul>
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>

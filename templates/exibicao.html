@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibição</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/global.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/exibicao.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <div class="list-nav">
+
+                <div class="logo">
+                    <p>Obras de Artes</p>
+                </div>
+                <div class="lista">
+                    <ul>
+                        <li><a href="{{ url_for('home')}}">Home</a></li>
+                        <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                        <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <h2>Lista de Exibições</h2>
+        <div class="card">
+            {% for exibicao in exibicao_list %}
+            <a class="exibições" href=" /exibicao/{{ (exibicao.id)  }}">
+                <div class="sub-card">
+                    <section id="classe-{{exibicao.get_id()}}">
+
+                        <div class="text-exibicao">
+
+                            <h3><b>Exibição:{{exibicao.get_id()}}</h3></b>
+                            <p><b>Nome:</b> {{exibicao.get_nome()}}</p>
+                            <p><b>Local:</b> {{exibicao.get_local()}}</p>
+                            <p><b>Data de inicio:</b> {{exibicao.get_data_inicio()}}</p>
+                            <p><b>Data do encerramento:</b> {{exibicao.get_data_fim()}}</p>
+                        </div>
+                    </section>
+                </div></a>
+
+                {% endfor %}
+        </div>
+
+    </div>
+
+    </div>
+    </div>
+    </div>
+    <footer>
+        <div class="ft">
+            <ul>
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('exibicao')}}">Exibições</a></li>
+                <li><a href="{{ url_for('leilao') }}">Leilões</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>
